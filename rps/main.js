@@ -16,6 +16,8 @@ function playRound(playerSelection, computerChoice) {
     } else if (playerSelection.toLowerCase() === "paper" && computerChoice.toLowerCase() === "rock") {
         win = true;
         return "You win(paper beats rock)";
+    } else if (playerSelection.toLowerCase() === "paper" && computerChoice.toLowerCase() === "scissors") {
+        return "You lose(scissors beats paper)"
     } else if (playerSelection.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "paper") {
         win = true;
         return "You win(scissors beats paper)";
