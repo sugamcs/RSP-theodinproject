@@ -1,13 +1,32 @@
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors');
+
+
+rockButton.addEventListener('click', handleClick);
+paperButton.addEventListener('click', handleClick);
+scissorsButton.addEventListener('click', handleClick);
+
+
+function handleClick(event) {
+    const playerChoice = event.target.id;
+    const computerChoice = getComputerChoice();
+    const roundResult = playRound(playerChoice,computerChoice)
+    console.log(roundResult)
+}
+
+
 function getComputerChoice() {
-    choices = ["Rock", "Paper", "Scissors"];
+    const choices = ["Rock", "Paper", "Scissors"];
     const randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex];
 }
 
+
 function playRound(playerSelection, computerChoice) {
     let win = false;
-    if (playerSelection == computerChoice) {
-        return "Tie";
+    if (playerSelection.toLowerCase() === computerChoice.toLowerCase()) {
+        return "It's a tie";
     } else if (playerSelection.toLowerCase() === "rock" && computerChoice.toLowerCase() === "paper") {
         return "You lose(paper beats rock)";
     } else if (playerSelection.toLowerCase() === "rock" && computerChoice.toLowerCase() === "scissors") {
@@ -24,42 +43,5 @@ function playRound(playerSelection, computerChoice) {
     } else if (playerSelection.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "rock") {
         return "You lose(rock beats scissors)";
     }
-    if (win === true) {
-        winCount++;
-        console.log("Win Count:", winCount);
-    }
 }
 
-function game() {
-    let computerWins = 0;
-    let playerWins = 0;
-
-        const playerChoice = prompt("What is your choice? ");
-        const computerChoice = getComputerChoice();
-
-        const roundResult = playRound(playerChoice, computerChoice);
-        console.log(roundResult);
-
-        if (roundResult.includes("win")) {
-            playerWins++;
-        } else if (roundResult.includes("lose")) {
-            computerWins++;
-        }
-    
-
-    if (playerWins > computerWins) {
-        console.log("You win the game!");
-    } else if (computerWins > playerWins) {
-        console.log("Computer wins the game!");
-    } else {
-        console.log("It's a tie game!");
-    }
-}
-
-
-    
-
-// Create three buttons, one for each selection.
-//  Add an event listener to the buttons
-//   that call your playRound function with the correct playerSelection every time a button is clicked. 
-// (you can keep the console.logs for this step)      

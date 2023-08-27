@@ -6,9 +6,11 @@
     background-color: #333;
 }
 .button {
-    font-style: oblique;
+    font-style: italic;
     font-weight: bolder;
-    font-size: larger;
+    font-size: 30px;
     width: 250px;
     height: 150px;
+    background-color: rgb(0, 128, 168);
+    
 }
