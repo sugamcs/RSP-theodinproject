@@ -34,7 +34,6 @@ function game() {
     let computerWins = 0;
     let playerWins = 0;
 
-    for (let round = 0; round < 5; round++) {
         const playerChoice = prompt("What is your choice? ");
         const computerChoice = getComputerChoice();
 
@@ -46,7 +45,7 @@ function game() {
         } else if (roundResult.includes("lose")) {
             computerWins++;
         }
-    }
+    
 
     if (playerWins > computerWins) {
         console.log("You win the game!");
@@ -57,4 +56,10 @@ function game() {
     }
 }
 
-game();
+
+    
+
+// Create three buttons, one for each selection.
+//  Add an event listener to the buttons
+//   that call your playRound function with the correct playerSelection every time a button is clicked. 
+// (you can keep the console.logs for this step)      
