@@ -15,8 +15,10 @@ result.style.padding = "10px";
 result.style.backgroundColor = "red";
 result.style.border = "1px solid #ccc";
 result.style.textAlign = "center";
-result.style.marginTop = "10px";
-result.style.color = "black"
+result.style.marginTop = "0px";
+result.style.fontSize = "80px";
+
+result.style.color = "white"
 document.body.append(result)
 
 
