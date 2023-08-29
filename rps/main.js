@@ -8,18 +8,37 @@ paperButton.addEventListener('click', handleClick);
 scissorsButton.addEventListener('click', handleClick);
 
 
+const result = document.createElement('div');
+result.id = "result";
+
+result.style.padding = "10px";
+result.style.backgroundColor = "red";
+result.style.border = "1px solid #ccc";
+result.style.textAlign = "center";
+result.style.marginTop = "10px";
+result.style.color = "black"
+document.body.append(result)
+
+
+
+
 function handleClick(event) {
     const playerChoice = event.target.id;
-    const computerChoice = getComputerChoice();
-    const roundResult = playRound(playerChoice,computerChoice)
-    console.log(roundResult)
+    let computerChoice = getComputerChoice();
+    const roundResult = playRound(playerChoice,computerChoice);
+    updateResultText(roundResult)
 }
 
 
 function getComputerChoice() {
-    const choices = ["Rock", "Paper", "Scissors"];
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+    choices = ['Rock', 'Paper', 'Scissors'];
+    randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex]
+   
+}
+
+function updateResultText(text){
+    result.textContent = text
 }
 
 
@@ -44,4 +63,8 @@ function playRound(playerSelection, computerChoice) {
         return "You lose(rock beats scissors)";
     }
 }
+
+
+
+
 
