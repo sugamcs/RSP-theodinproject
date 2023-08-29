@@ -2,11 +2,9 @@ const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
 const scissorsButton = document.getElementById('scissors');
 
-
 rockButton.addEventListener('click', handleClick);
 paperButton.addEventListener('click', handleClick);
 scissorsButton.addEventListener('click', handleClick);
-
 
 const result = document.createElement('div');
 result.id = "result";
@@ -21,14 +19,35 @@ result.style.fontSize = "80px";
 result.style.color = "white"
 document.body.append(result)
 
-
-
+let winCounter = 0;
+let loseCounter = 0;
 
 function handleClick(event) {
     const playerChoice = event.target.id;
     let computerChoice = getComputerChoice();
-    const roundResult = playRound(playerChoice,computerChoice);
-    updateResultText(roundResult)
+    const roundResult = playRound(playerChoice, computerChoice);
+    updateResultText(roundResult);
+
+    if (roundResult.includes("win")) {
+        winCounter++;
+    } else if (roundResult.includes("lose")) {
+        loseCounter++;
+    }
+
+    if (winCounter === 5) {
+        updateResultText("You won 5 times");
+        disableButtons();
+    } else if (loseCounter === 5) {
+        updateResultText("Computer won 5 times");
+        disableButtons();
+    }
+}
+
+
+function disableButtons() {
+    rockButton.removeEventListener('click', handleClick);
+    paperButton.removeEventListener('click', handleClick);
+    scissorsButton.removeEventListener('click', handleClick);
 }
 
 
@@ -36,8 +55,8 @@ function getComputerChoice() {
     choices = ['Rock', 'Paper', 'Scissors'];
     randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex]
-   
 }
+
 
 function updateResultText(text){
     result.textContent = text
@@ -45,7 +64,7 @@ function updateResultText(text){
 
 
 function playRound(playerSelection, computerChoice) {
-    let win = false;
+    let win;
     if (playerSelection.toLowerCase() === computerChoice.toLowerCase()) {
         return "It's a tie";
     } else if (playerSelection.toLowerCase() === "rock" && computerChoice.toLowerCase() === "paper") {
@@ -65,8 +84,4 @@ function playRound(playerSelection, computerChoice) {
         return "You lose(rock beats scissors)";
     }
 }
-
-
-
-
 
